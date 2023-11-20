@@ -3,77 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>RockPaperScissors</title>
   </head>
   <body>
-    <script>
-      function getComputerChoice() {
-        const choices = ["Rock", "Paper", "Scissors"];
-        const randomIndex = Math.floor(Math.random() * 3);
-        return choices[randomIndex];
-      }
-
-      function playRound(playerSelection, computerSelection) {
-        playerSelection = playerSelection.toLowerCase();
-        computerSelection = computerSelection.toLowerCase();
-        if (playerSelection === "") {
-          return "Game canceled. Invalid input.";
-        } else if (
-          playerSelection !== "rock" &&
-          playerSelection !== "paper" &&
-          playerSelection !== "scissors"
-        ) {
-          return "Invalid input. Choose rock, paper, or scissors.";
-        } else if (playerSelection === computerSelection) {
-          return "Draw";
-        } else if (
-          (playerSelection === "rock" && computerSelection === "scissors") ||
-          (playerSelection === "scissors" && computerSelection === "paper") ||
-          (playerSelection === "paper" && computerSelection === "rock")
-        ) {
-          return `You Win! ${playerSelection} beats ${computerSelection}`;
-        } else {
-          return `You Lose! ${computerSelection} beats ${playerSelection}`;
-        }
-      }
-
-      let playerScore = 0;
-      let computerScore = 0;
-      let ties = 0;
-
-      for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = prompt(
-          "Enter your choice (Rock, Paper, or Scissors):"
-        );
-
-        if (playerSelection === null) {
-          console.log("Game canceled by user.");
-          break;
-        }
-
-        const result = playRound(playerSelection, computerSelection);
-        console.log(result);
-
-        // Update scores based on the result
-        if (result.includes("Win")) {
-          playerScore++;
-        } else if (result.includes("Lose")) {
-          computerScore++;
-        } else {
-          ties++;
-        }
-      }
-
-      console.log(`Final Scores: Player ${playerScore}, Computer ${computerScore}, Ties ${ties}`);
-
-      if(playerScore > computerScore){
-        console.log('Player wins!');
-      }else if(playerScore < computerScore){
-        console.log('Computer Wins');
-      }else {
-        console.log('Its a Tie')
-      }
-    </script>
+    <div id="intro-div">
+      <p id="intro">Can you beat the computer in this game? First to 5 wins.</p>
+    </div>
+    <div class="container"> 
+      <button id="rock">✊</button>
+      <button id="paper">🖐️</button>
+      <button id="scissors">✌️</button>
+    </div>
+    <div id="outputs">
+      <div id="scores-div">
+        <p id="player-score"></p>
+        <p id="computer-score"></p>
+      </div>
+      <div id="commentary-div">
+        <p id="commentary"></p>
+      </div>
+    </div>
+    <div id="reset-game">Reset</div>
   </body>
 </html>
