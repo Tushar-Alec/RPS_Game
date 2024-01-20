@@ -57,7 +57,7 @@ body {
   cursor: pointer;
   font-size: 3rem;
   margin: 90px;
-  color: white;
+  color: pink;
 }
 #reset-game:hover {
   background-color: pink;
